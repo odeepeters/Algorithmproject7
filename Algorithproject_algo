@@ -1,0 +1,67 @@
+
+
+Initialize:
+  length = 0
+  word_count = 0
+  vowel_count = 0
+  previous_char = ' '
+  in_word = False
+
+Read the input sentence character by character:
+  For each character `char` in the sentence:
+    length = length + 1
+    If char is a vowel (i.e., 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'):
+      vowel_count = vowel_count + 1
+    If char is not a space and previous_char is a space:
+      word_count = word_count + 1
+      in_word = True
+    If char is a space:
+      in_word = False
+    previous_char = char
+
+After the loop:
+  If the last character is not a period:
+    Print "Error: The sentence must end with a period."
+  Else:
+    Print length
+    Print word_count
+    Print vowel_count
+
+
+
+// Javascript interpretattion for the Algorithm above
+
+function analyzeSentence(sentence) {
+    let length = 0;
+    let wordCount = 0;
+    let vowelCount = 0;
+    let previousChar = ' ';
+    
+    for (let i = 0; i < sentence.length; i++) {
+        let char = sentence[i];
+        length++;
+        
+        // Check if the character is a vowel
+        if ('aeiouAEIOU'.includes(char)) {
+            vowelCount++;
+        }
+        
+        // Check for word boundaries
+        if (char !== ' ' && previousChar === ' ') {
+            wordCount++;
+        }
+        
+        previousChar = char;
+    }
+    
+    // Check if the sentence ends with a period
+    if (sentence.length > 0 && sentence[sentence.length - 1] !== '.') {
+        console.log("Error: The sentence must end with a period.");
+    } else {
+        console.log(length);
+        console.log(wordCount);
+        console.log(vowelCount);
+    }
+}
+
+
